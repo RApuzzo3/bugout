@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 require_once __DIR__ .'/vendor/autoload.php';
 
-set_exception_handler([new \App\Exception\ExceptionHandler(), 'handle']);
+require_once __DIR__ .'/Src/Exception/exception.php';
+
 
 $config = \App\Helpers\Config::getFileContent('appf');
 var_dump($config);

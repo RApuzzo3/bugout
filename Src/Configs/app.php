@@ -24,7 +24,7 @@ return [
      * Set this to false for a custom error
      * message to display (best for live env).
      */
-    'debug' => 'true',
+    'debug' => true,
 
     /**
      * LOGGING
