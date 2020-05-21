@@ -6,19 +6,6 @@ require_once __DIR__ .'/vendor/autoload.php';
 
 require_once __DIR__ .'/Src/Exception/exception.php';
 
-
-$config = \App\Helpers\Config::getFileContent('appf');
-var_dump($config);
-
-$application = new \App\Helpers\App();
-echo $application->getServerTime()->format('m/d/Y h:i:s') . PHP_EOL;
-echo $application->getLogPath() . PHP_EOL;
-echo $application->getEnvironment() . PHP_EOL;
-echo $application->isDebugMode() . PHP_EOL;
-echo $application->isRunningFromConsole() . PHP_EOL;
-
-if($application->isRunningFromConsole()) {
-    echo 'from console';
-} else {
-    echo 'from browser';
-}
+$logger = new \App\Logger\Logger();
+$logger->log(\App\Logger\LogLevel::EMERGENCY, 'test emergency', ['exception'=>'exception occured.']);
+$logger->info('User made ok.',['id'=>5]);

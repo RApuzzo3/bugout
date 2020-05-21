@@ -15,7 +15,7 @@ return [
      * Are we in a production, development, or 
      * local environment?
      */
-    'env' => 'local',
+    'env' => 'dev',
 
     /**
      * DEBUGGING
