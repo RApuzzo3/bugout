@@ -4,7 +4,7 @@
     colors="true"
     convertErrorsToExceptions="true"
     convertWarningsToExceptions="true"
-    convertNotciesToExceptions="true"
+    convertNoticesToExceptions="true"
     stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
