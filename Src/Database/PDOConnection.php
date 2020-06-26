@@ -4,8 +4,8 @@ namespace App\Database;
 
 use App\Contracts\DatabaseConnectionInterface;
 use App\Exception\DatabaseConnectionException;
-use PDOException;
 use PDO;
+use PDOException;
 
 class PDOConnection extends AbstractConnection implements DatabaseConnectionInterface
 {
@@ -17,6 +17,17 @@ class PDOConnection extends AbstractConnection implements DatabaseConnectionInte
         'db_password',
         'default_fetch',
     ];
+
+    protected function parseCredentials(array $credentials): array
+    {
+        $dsn =sprintf(
+            '%s:host=%s;dbname=%s',
+            $credentials['driver'],
+            $credentials['host'],
+            $credentials['db_name']
+        );
+        return [$dsn, $credentials['db_username'], $credentials['db_password']];
+    }
 
     public function connect(): PDOConnection
     {
@@ -34,19 +45,8 @@ class PDOConnection extends AbstractConnection implements DatabaseConnectionInte
         return $this;
     }
 
-    public function getConnection()
+    public function getConnection(): PDO
     {
         return $this->connection;
-    }
-
-    protected function parseCredentials(array $credentials): array
-    {
-        $dsn =sprintf(
-            '%s:host=%s;dbname=%s',
-            $credentials['driver'],
-            $credentials['host'],
-            $credentials['db_name']
-        );
-        return [$dsn, $credentials['db_username'], $credentials['db_password']];
     }
 }
